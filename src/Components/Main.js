@@ -7,10 +7,10 @@ export default function Filter() {
     const {category} = useParams()
     
     return (
-        <main className="row justify-content-evenly pt-3">
+        <div className="row justify-content-center">
             {products.products.filter(p=>p.category === `${category}`).map(
                 product => <ProductCard prodData={product} key={product.id} />
             )}
-        </main>
+        </div>
     )
 }

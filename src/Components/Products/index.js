@@ -5,12 +5,13 @@ import RatingStars from "./RatingStars"
 import { FaCartPlus } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
+import ProductCard from "./Card";
 
 export default function Product() {
     
     const {identify} = useParams()
     const [range,setRange] = useState(1)
-    const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = products.products[identify]
+    const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = products.products[identify-1]
 
     return (
         <div className="mt-2">
@@ -42,7 +43,7 @@ export default function Product() {
                 </div>
                 {/* data */}
                 <div className="col col-md-6 m-auto">
-                    <div className="text-center border-bottom-0 border-top-0 border rounded px-4 py-3 w-100">
+                    <div className="text-center border rounded px-4 py-3 w-100">
                         <span className="fs-2 text-dark m-3">{price}<span className="fs-4 text-danger ">-{discountPercentage}%</span></span>
                         <div className="d-flex w-100 mt-3">
                             <span className="w-25 m-auto">Quantity : </span>
@@ -59,6 +60,13 @@ export default function Product() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <p className="text-center fs-3 mt-3">More like this..</p>
+            <div className="d-flex justify-content-center">
+                <hr className="mx-4 w-50 " />
+            </div>
+            <div className="row justify-content-evenly">
+                {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map(p=><ProductCard prodData={p} />)}
             </div>
         </div>
         

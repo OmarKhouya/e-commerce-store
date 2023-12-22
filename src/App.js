@@ -6,8 +6,9 @@ import { BrowserRouter ,Route, Routes } from 'react-router-dom'
 import Filter from './Components/Main'
 import Home from './Components'
 import Product from './Components/Products'
-import NotFoundPage from './Components/notFoundPage'
+import NotFoundPage from './Components/Pages/notFoundPage'
 import Cart from './Components/Cart'
+import About from './Components/Pages/About'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/Home/:category/:identify" element={<Product />}/>
             <Route path="/:category/:identify" element={<Product />}/>
             <Route path="/Cart" element={<Cart />}/>
+            <Route path="/About" element={<About />}/>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         <Footer />
