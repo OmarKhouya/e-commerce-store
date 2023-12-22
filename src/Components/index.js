@@ -1,23 +1,13 @@
-import { Component } from 'react'
-import Header from './Header'
-import Nav from "./Nav"
-import Main from "./Main"
-import Footer from "./Footer"
+import ProductCard from "./Products/Card";
 import products from "../data.json"
-import Product from './Product'
 
-// const categories = products.products.map(product => product.category).filter((value, index, self) => self.indexOf(value) === index)
-
-export default class MainComp extends Component { 
-    render() {
-        return (
-            <div className='container'>
-                <Header />
-                <Nav/>
-                <Main products={products.products}/>
-                <Footer />
-                <Product prodData={products.products}/>
-            </div>
-        )
-    }
+export default function Filter() {
+    
+    return (
+        <main className="row justify-content-evenly pt-3">
+            {products.products.map(
+                product => <ProductCard prodData={product} key={product.id} />
+            )}
+        </main>
+    )
 }

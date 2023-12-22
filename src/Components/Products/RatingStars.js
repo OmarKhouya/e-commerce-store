@@ -1,4 +1,5 @@
- const RatingStars = ({ rating }) => {
+const RatingStars = ({ rating }) => {
+    
     const maxStars = 5;
     const goldStars = Math.floor(rating);
     const greyStars = maxStars - goldStars;
