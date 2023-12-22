@@ -8,8 +8,8 @@ export default function Nav() {
                     Electronics
                 </button>
                 <ul className="dropdown-menu">
-                    <li><Link to={`/smartphones`} className="nav-link dropdown-item">smartphones</Link></li>
-                    <li><Link to={`/laptops`} className="nav-link dropdown-item">laptops</Link></li>
+                    <li><Link to={`Home/smartphones`} className="nav-link dropdown-item">smartphones</Link></li>
+                    <li><Link to={`Home/laptops`} className="nav-link dropdown-item">laptops</Link></li>
                 </ul>
             </div>
             <div className="dropdown">
@@ -17,8 +17,8 @@ export default function Nav() {
                     House 
                 </button>
                 <ul className="dropdown-menu">
-                    <li><Link to={`/home-decoration`} className="nav-link dropdown-item">home decoration</Link></li>
-                    <li><Link to={`/groceries`} className="nav-link dropdown-item">groceries</Link></li>
+                    <li><Link to={`Home/home-decoration`} className="nav-link dropdown-item">home decoration</Link></li>
+                    <li><Link to={`Home/groceries`} className="nav-link dropdown-item">groceries</Link></li>
                 </ul>
             </div>
             <div className="dropdown">
@@ -26,8 +26,8 @@ export default function Nav() {
                     Others
                 </button>
                 <ul className="dropdown-menu">
-                    <li><Link to={`/skincare`} className="nav-link dropdown-item">skincare</Link></li>
-                    <li><Link to={`/fragrances`} className="nav-link dropdown-item">fragrances</Link></li>
+                    <li><Link to={`Home/skincare`} className="nav-link dropdown-item">skincare</Link></li>
+                    <li><Link to={`Home/fragrances`} className="nav-link dropdown-item">fragrances</Link></li>
                 </ul>
             </div>
         </nav>

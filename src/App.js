@@ -1,26 +1,31 @@
 
 import Header from './Components/Header'
 import Nav from "./Components/Nav"
-import Main from "./Components/Main"
 import Footer from "./Components/Footer"
-import { Route, Router, Routes } from 'react-router'
+import { BrowserRouter ,Route, Routes } from 'react-router-dom'
 import Filter from './Components/Main'
 import Home from './Components'
 import Product from './Components/Products'
 import NotFoundPage from './Components/notFoundPage'
+import Cart from './Components/Cart'
 
 export default function App() {
   return (
-    <div className='mx-2'>
-      <Header />
-      <Nav/>
-      <Routes>
-        <Route path="/Product/:identify" element={<Product />}/>
-        <Route path="/:category" element={<Filter />}/>
-        <Route path="/" element={<Home />}/>
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className='mx-2'>
+        <Header />
+        <Nav/>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/Home/:category" element={<Filter />}/>
+            <Route path="/Home/:category/:identify" element={<Product />}/>
+            <Route path="/:category/:identify" element={<Product />}/>
+            <Route path="/Cart" element={<Cart />}/>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        <Footer />
+      </div>
+      
+    </BrowserRouter>
   )
 }

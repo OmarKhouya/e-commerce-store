@@ -1,13 +1,17 @@
+
 import { useState } from "react"
 import products from "../../data.json"
 import RatingStars from "./RatingStars"
 import { FaCartPlus } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
+
 export default function Product() {
+    
     const {identify} = useParams()
     const [range,setRange] = useState(1)
     const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = products.products[identify]
+
     return (
         <div className="mt-2">
             <div className="">
