@@ -12,7 +12,7 @@ import About from './Components/Pages/About'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/e-commerce-store">
       <div className='mx-2'>
         <Header />
         <Nav/>
