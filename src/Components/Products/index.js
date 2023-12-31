@@ -6,12 +6,26 @@ import { FaCartPlus } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import ProductCard from "./Card";
+import { useDispatch, useSelector } from "react-redux";
+import {addToCart} from "../../store/actions";
 
 export default function Product() {
     
     const {identify} = useParams()
     const [range,setRange] = useState(1)
+
     const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = products.products[identify-1]
+
+    const dispatch = useDispatch();
+    const inCartIds = useSelector(state=>state.inCartIds.inCartIdentifies);
+
+    const AddToCart = () =>{
+        if(inCartIds.some(i=>i.id===id)){
+            alert("Product already in CART!")
+        }else{
+            dispatch(addToCart({id:id,quantity:Number(range)}))
+        }
+    }
 
     return (
         <div className="mt-2">
@@ -55,18 +69,19 @@ export default function Product() {
                         </div>
                         <div className="mt-3"><RatingStars rating={rating} /> ({rating})</div>
                         <div className="d-flex justify-content-evenly mt-3 w-100">
-                            <button className="btn btn-outline-primary me-2">Add to CART <FaCartPlus /></button>
+                            <button className="btn btn-outline-primary me-2" onClick={AddToCart}>Add to CART <FaCartPlus /></button>
                             <Link to={"/cart"} className="btn btn-outline-success">Go to CART <FaShoppingCart /></Link>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* suggested items */}
             <p className="text-center fs-3 mt-3">More like this..</p>
             <div className="d-flex justify-content-center">
                 <hr className="mx-4 w-50 " />
             </div>
             <div className="row justify-content-evenly">
-                {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map(p=><ProductCard prodData={p} />)}
+                {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map((p,index)=><ProductCard prodData={p} key={index}/>)}
             </div>
         </div>
         

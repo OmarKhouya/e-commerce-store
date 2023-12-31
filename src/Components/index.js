@@ -1,7 +1,7 @@
 import ProductCard from "./Products/Card";
 import products from "../data.json"
 
-export default function Filter() {
+export default function Main() {
     
     return (
         <main className="row justify-content-evenly pt-3">

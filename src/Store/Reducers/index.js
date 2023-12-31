@@ -1,2 +1,11 @@
+import {combineReducers} from "redux";
+import addToCart from "./addToCart";
 
-// const CombinedReducers 
+
+const allReducers = combineReducers(
+    {
+        inCartIds : addToCart
+    }
+)
+
+export default allReducers

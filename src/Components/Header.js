@@ -6,13 +6,15 @@ import { BsCart3 } from "react-icons/bs";
 import { MdOutlineMessage } from "react-icons/md";
 import { TbInfoSquareRounded } from "react-icons/tb";
 import { FaBars } from "react-icons/fa6";
-import Nav from "./Nav";
+
 export default function Header() {
     return (
         <header className="row border-bottom shadow sticky-top top-0 bg-body">
             <nav className="navbar navbar-expand-sm d-flex justify-content-between ">
                 <div className="navbar-brand">
-                    <Logo style={{width: "100px",height: "50px"}}/>
+                    <Link to={"/"}>
+                        <Logo style={{width: "100px",height: "50px"}}/>
+                    </Link>
                 </div>
                 <button type="button" className="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navOne">
                     <FaBars />

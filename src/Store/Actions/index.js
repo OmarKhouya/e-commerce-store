@@ -1,7 +1,13 @@
+export const addToCart = (id)=>{
+    return{
+        type: "add",
+        payload: id,
+    }
+}
 
-export const addToCart = (productId) => {
-    return {
-        type : "addToCart",
-        payload : productId,
+export const removeFromCart = (id)=>{
+    return{
+        type: "remove",
+        payload: id,
     }
 }
