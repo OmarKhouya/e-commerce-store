@@ -1,35 +1,36 @@
 import { Link } from "react-router-dom"
+import styled from "styled-components"
+
+const LiNav = styled.li`
+    text-decoration: none;
+    color: black;
+    // border: solid 0.5px white;
+    text-align: center;
+    /* border-radius: 10px;
+    :hover {
+        text-align: center;
+        border-radius: 10px;
+        background-color: white;
+        color: black;
+    } */
+`
 
 export default function Nav() {
+
+    const navItems = ["smartphones","laptops","home-decoration","groceries","skincare","fragrances"]
+
     return (
-        <nav className=" nav d-flex px-4 py-3 justify-content-around border-bottom shadow rounded-bottom">
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Electronics
-                </button>
-                <ul className="dropdown-menu">
-                    <li><Link to={`Home/smartphones`} className="nav-link dropdown-item">smartphones</Link></li>
-                    <li><Link to={`Home/laptops`} className="nav-link dropdown-item">laptops</Link></li>
-                </ul>
-            </div>
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    House 
-                </button>
-                <ul className="dropdown-menu">
-                    <li><Link to={`Home/home-decoration`} className="nav-link dropdown-item">home decoration</Link></li>
-                    <li><Link to={`Home/groceries`} className="nav-link dropdown-item">groceries</Link></li>
-                </ul>
-            </div>
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Others
-                </button>
-                <ul className="dropdown-menu">
-                    <li><Link to={`Home/skincare`} className="nav-link dropdown-item">skincare</Link></li>
-                    <li><Link to={`Home/fragrances`} className="nav-link dropdown-item">fragrances</Link></li>
+        <nav className="col-lg-3 col-md-3 col-sm-12 mt-4 mb-2">
+            <div className="mx-3 p-3 rounded d-flex "  style={{backgroundColor: "#BFEAF5",minHeight: "100%"}}>
+                <ul className="navbar-nav nav w-100 flex-column justify-content-around">
+                    {
+                        navItems.map(
+                            nav=><LiNav className="nav-item"><Link className="nav-link" to={`Home/${nav}`}>{nav}</Link></LiNav>
+                        )
+                    }
                 </ul>
             </div>
         </nav>
+        
     )
 }

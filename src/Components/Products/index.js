@@ -31,7 +31,7 @@ export default function Product() {
         <div className="mt-2">
             <div className="">
                 <p className="text-center fs-1 mt-4">{title}</p>
-                <p className="text-center fs-2 text-muted">{description}</p>
+                <p className="text-center fs-2">{description}</p>
             </div>
             <div className="d-flex" style={{flexWrap: "wrap"}}>
                 {/* Carrousel */}
@@ -56,8 +56,8 @@ export default function Product() {
                     </div>
                 </div>
                 {/* data */}
-                <div className="col col-md-6 m-auto">
-                    <div className="text-center border rounded px-4 py-3 w-100">
+                <div className="col col-md-6 m-auto ">
+                    <div className="text-center rounded px-4 py-3 w-100" style={{backgroundColor:"#BFEAF5",borderColor:"#91D8E4"}}>
                         <span className="fs-2 text-dark m-3">{price}<span className="fs-4 text-danger ">-{discountPercentage}%</span></span>
                         <div className="d-flex w-100 mt-3">
                             <span className="w-25 m-auto">Quantity : </span>
@@ -68,7 +68,7 @@ export default function Product() {
                             {stock > 0 ? `in stock :  ${stock}` : `not in stock`}
                         </div>
                         <div className="mt-3"><RatingStars rating={rating} /> ({rating})</div>
-                        <div className="d-flex justify-content-evenly mt-3 w-100">
+                        <div className="d-flex justify-content-center mt-3 w-100">
                             <button className="btn btn-outline-primary me-2" onClick={AddToCart}>Add to CART <FaCartPlus /></button>
                             <Link to={"/cart"} className="btn btn-outline-success">Go to CART <FaShoppingCart /></Link>
                         </div>

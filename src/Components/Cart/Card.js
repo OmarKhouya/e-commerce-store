@@ -19,7 +19,7 @@ const Card = ({data,data2}) =>{
         <div className="border border-dark px-3 py-4 my-3 rounded">
             <div className="d-flex justify-content-between text-center">
                 <Link to={`/${category}/${id}`} className="card-img w-50">
-                    <img src={thumbnail} alt="thumbnail" className="w-100" />
+                    <img src={thumbnail} alt="thumbnail" className="" style={{height: "10rem"}} />
                 </Link>
                 <div>
                     <p>{title}</p>

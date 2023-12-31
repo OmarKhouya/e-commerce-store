@@ -15,7 +15,7 @@ export default function Cart() {
 
     return (
         <div className='row'>
-            <div className='col-lg-8 col-sm-12'>
+            <div className='col-lg-6 col-sm-12'>
                 {
                     inCartData.map((cp,index)=><Card data={cp} key={index} data2={inCartIdentifies}/>)
                 }

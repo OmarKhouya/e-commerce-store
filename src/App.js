@@ -13,21 +13,22 @@ import About from './Components/Pages/About'
 export default function App() {
   return (
     <BrowserRouter>
-      <div className='mx-2'>
+      <div className='w-100 overflow-hidden' >
         <Header />
-        <Nav/>
-          <Routes>
-            <Route path="/" element={<Main />}/>
-            <Route path="/Home/:category" element={<Filter />}/>
-            <Route path="/Home/:category/:identify" element={<Product />}/>
-            <Route path="/:category/:identify" element={<Product />}/>
-            <Route path="/Cart" element={<Cart />}/>
-            <Route path="/About" element={<About />}/>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <main className='row p-0' >
+            <Nav/>
+            <Routes>
+              <Route path="/" element={<Main />}/>
+              <Route path="/Home/:category" element={<Filter />}/>
+              <Route path="/Home/:category/:identify" element={<Product />}/>
+              <Route path="/:category/:identify" element={<Product />}/>
+              <Route path="/Cart" element={<Cart />}/>
+              <Route path="/About" element={<About />}/>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
         <Footer />
       </div>
-      
     </BrowserRouter>
   )
 }

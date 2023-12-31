@@ -9,7 +9,7 @@ import { FaBars } from "react-icons/fa6";
 
 export default function Header() {
     return (
-        <header className="row border-bottom shadow sticky-top top-0 bg-body">
+        <header className="shadow sticky-top top-0 w-100"  style={{backgroundColor: "#91D8E1"}}>
             <nav className="navbar navbar-expand-sm d-flex justify-content-between ">
                 <div className="navbar-brand">
                     <Link to={"/"}>
