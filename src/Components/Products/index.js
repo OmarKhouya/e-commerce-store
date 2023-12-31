@@ -8,6 +8,20 @@ import { Link, useParams } from "react-router-dom";
 import ProductCard from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import {addToCart} from "../../store/actions";
+import styled from "styled-components";
+
+const Section = styled.section`
+    /* max-height: 77.5vh;  */
+    overflow: scroll;
+    overflow-x: hidden;
+    @media (min-width: 768px){
+        max-height: 77.5vh!important;
+    }
+    @media (max-width: 767px){
+        max-height: none!important;
+    }
+`
+
 
 export default function Product() {
     
@@ -28,7 +42,7 @@ export default function Product() {
     }
 
     return (
-        <div className="mt-2">
+        <Section className="col-lg-9 col-md-9 col-sm-12">
             <div className="">
                 <p className="text-center fs-1 mt-4">{title}</p>
                 <p className="text-center fs-2">{description}</p>
@@ -83,7 +97,7 @@ export default function Product() {
             <div className="row justify-content-evenly">
                 {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map((p,index)=><ProductCard prodData={p} key={index}/>)}
             </div>
-        </div>
+        </Section>
         
     )
 }
