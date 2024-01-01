@@ -2,7 +2,7 @@ import React from 'react'
 import products from "../../data.json"
 import { useSelector } from 'react-redux';
 import Card from './Card';
-
+import Section from '../Section';
 
 export default function Cart() {
 
@@ -14,15 +14,17 @@ export default function Cart() {
     console.log(inCartData)
 
     return (
-        <div className='row'>
-            <div className='col-lg-6 col-sm-12'>
-                {
-                    inCartData.map((cp,index)=><Card data={cp} key={index} data2={inCartIdentifies}/>)
-                }
+        <Section className="col-lg-9 col-md-9 col-sm-12 mt-2">
+            <div className='row'>
+                <div className='col-lg-8 col-sm-12'>
+                    {
+                        inCartData.map((cp,index)=><Card data={cp} key={index} data2={inCartIdentifies}/>)
+                    }
+                </div>
+                <div>
+                    
+                </div>
             </div>
-            <div>
-
-            </div>
-        </div>
+        </Section>
     )
 }

@@ -1,9 +1,10 @@
-import React from 'react'
+
+import Section from '../Section'
 
 export default function About() {
     return (
-        <div className="col-lg-9 col-md-9 col-sm-12" style={{height: "77.5vh",overflow: "scroll",overflowX:"hidden"}}>
-            <p className='pt-3 fs-5 text-center m-auto d-flex align-items-center' style={{textAlign: "justify"}} >
+        <Section className='col-lg-9 col-md-9 col-sm-12 mt-4 mb-2'>
+            <p className='fs-5 px-3' style={{textAlign: "justify"}} >
             Welcome to E-commerce Store, where passion meets innovation in the world of e-commerce. Established in 2023, we embarked on a journey with a simple yet profound vision: to redefine online shopping by offering a curated selection of products that resonate with quality, style, and purpose.
 
             At the heart of E-commerce Store is a team of dedicated professionals, each driven by a shared commitment to deliver unparalleled customer experiences. Our curated range spans across various categories, from fashion-forward apparel and cutting-edge gadgets to timeless home essentials. Every product is handpicked, ensuring that it not only meets our stringent quality standards but also aligns with the evolving needs and aspirations of our discerning clientele.
@@ -14,6 +15,6 @@ export default function About() {
 
             Thank you for choosing E-commerce Store. Let’s embark on this exciting journey together
             </p>
-        </div>
+        </Section>
     )
 }

@@ -17,7 +17,7 @@ const LiNav = styled.li`
 
 export default function Nav() {
 
-    const navItems = ["smartphones","laptops","home-decoration","groceries","skincare","fragrances"]
+    const navItems = ["smartphones","laptops","home-decoration","groceries","skincare","fragrances","fruits"]
 
     return (
         <nav className="col-lg-3 col-md-3 col-sm-12 mt-4 mb-2">

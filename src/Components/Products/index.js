@@ -8,21 +8,28 @@ import { Link, useParams } from "react-router-dom";
 import ProductCard from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import {addToCart} from "../../store/actions";
+import Section from '../Section';
 import styled from "styled-components";
 
-const Section = styled.section`
-    /* max-height: 77.5vh;  */
-    overflow: scroll;
-    overflow-x: hidden;
-    @media (min-width: 768px){
-        max-height: 77.5vh!important;
-    }
-    @media (max-width: 767px){
-        max-height: none!important;
-    }
+const ImgCarousel = styled.img`
+    /* @media (min-width:509px){
+        min-width: 100%!important;
+        min-height: 100%!important;
+    } */
 `
 
-
+const MergeDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: between;
+    flex-wrap: wrap;
+`
+const InnerCarousel = styled.div`
+    @media (min-width:509px){
+        height: 20rem;
+        width: 30rem;
+    }
+`
 export default function Product() {
     
     const {identify} = useParams()
@@ -42,44 +49,42 @@ export default function Product() {
     }
 
     return (
-        <Section className="col-lg-9 col-md-9 col-sm-12">
-            <div className="">
-                <p className="text-center fs-1 mt-4">{title}</p>
-                <p className="text-center fs-2">{description}</p>
+        <Section className="col-lg-9 col-md-9 col-sm-12 mt-4 mb-2 rounded" style={{backgroundColor: "#BFEAF5"}}>
+            <div>
+                <span className="text-center fs-1 d-block mt-3">{title}</span>
+                <span className="text-center fs-4 d-block mt-3 text-muted">{description}</span>
             </div>
-            <div className="d-flex" style={{flexWrap: "wrap"}}>
-                {/* Carrousel */}
-                <div className="col-md-5 mx-auto">
-                    <div id={`carouselProductImage${id}`} className="carousel slide carousel-fade shadow w-100">
-                        <div className="carousel-inner rounded">
+            <MergeDiv className="mt-3">
+                <div className="mx-auto">
+                    <div id={`carouselProductImage${id}`} className="carousel slide carousel-fade shadow">
+                        <InnerCarousel className="carousel-inner rounded">
                             <div className="carousel-item active">
-                                <img className="card-img-top" src={thumbnail} alt="Second slide" />
+                                <ImgCarousel className="card-img" src={thumbnail} alt="Second slide"/>
                             </div>
                             {
-                                images.map(image => <div className="carousel-item card-img-top" key={image}><img className="" src={image} alt={image} style={{width: "inherit"}}/></div>)
+                                images.map(image => <div className="carousel-item" key={image}><ImgCarousel className="card-img" src={image} alt={image}/></div>)
                             }
-                        </div>
+                        </InnerCarousel>
                         <button className="carousel-control-prev" type="button" data-bs-target={`#carouselProductImage${id}`} data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually">Previous</span>
+                            <span className="visually-hidden">Previous</span>
                         </button>
                         <button className="carousel-control-next" type="button" data-bs-target={`#carouselProductImage${id}`} data-bs-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually">Next</span>
+                            <span className="visually-hidden">Next</span>
                         </button>
                     </div>
                 </div>
-                {/* data */}
-                <div className="col col-md-6 m-auto ">
-                    <div className="text-center rounded px-4 py-3 w-100" style={{backgroundColor:"#BFEAF5",borderColor:"#91D8E4"}}>
-                        <span className="fs-2 text-dark m-3">{price}<span className="fs-4 text-danger ">-{discountPercentage}%</span></span>
+                <div className="m-auto">
+                    <div className="text-center rounded px-2 py-3 w-100" style={{backgroundColor:"#BFEAF5",borderColor:"#91D8E4"}}>
+                        <span className="fs-2 text-dark m-3">{price}-<span className="fs-4 text-danger text-decoration-line-through">{discountPercentage}%</span></span>
                         <div className="d-flex w-100 mt-3">
-                            <span className="w-25 m-auto">Quantity : </span>
-                            <input type="range" max={stock} className="form-control" onChange={(e)=>{setRange(e.target.value)}} value={range}/>
+                            <span className="w-50 m-auto">Quantity : </span>
+                            <input type="range" max={stock} className="form-control w-50" onChange={(e)=>{setRange(e.target.value)}} value={range}/>
                             <span className="m-auto ps-3">{range}</span>
                         </div>
                         <div className="mt-3">
-                            {stock > 0 ? `in stock :  ${stock}` : `not in stock`}
+                            {stock > 0 ? `in stock : ${stock}`: "not in stock"}
                         </div>
                         <div className="mt-3"><RatingStars rating={rating} /> ({rating})</div>
                         <div className="d-flex justify-content-center mt-3 w-100">
@@ -88,14 +93,15 @@ export default function Product() {
                         </div>
                     </div>
                 </div>
-            </div>
-            {/* suggested items */}
-            <p className="text-center fs-3 mt-3">More like this..</p>
-            <div className="d-flex justify-content-center">
-                <hr className="mx-4 w-50 " />
-            </div>
-            <div className="row justify-content-evenly">
-                {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map((p,index)=><ProductCard prodData={p} key={index}/>)}
+            </MergeDiv>
+            <div className="mb-3">
+                <p className="text-center fs-3 mt-3">More like this..</p>
+                <div className="d-flex justify-content-center">
+                    <hr className="mx-4 w-50 " />
+                </div>
+                <div className="row justify-content-evenly">
+                    {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map((p,index)=><ProductCard prodData={p} key={index}/>)}
+                </div>
             </div>
         </Section>
         
