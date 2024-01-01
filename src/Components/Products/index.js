@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import products from "../../data.json"
 import RatingStars from "./RatingStars"
 import { FaCartPlus } from "react-icons/fa";
@@ -10,13 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {addToCart} from "../../store/actions";
 import Section from '../Section';
 import styled from "styled-components";
-
-const ImgCarousel = styled.img`
-    /* @media (min-width:509px){
-        min-width: 100%!important;
-        min-height: 100%!important;
-    } */
-`
+import { SlArrowRight } from "react-icons/sl";
+import { SlArrowLeft } from "react-icons/sl";
 
 const MergeDiv = styled.div`
     display: flex;
@@ -48,6 +43,14 @@ export default function Product() {
         }
     }
 
+    useEffect(
+        ()=>{
+            return ()=>{
+                setRange(1)
+            }
+        },[]
+    )
+
     return (
         <Section className="col-lg-9 col-md-9 mb-2 rounded mx-auto" style={{backgroundColor: "#BFEAF5"}}>
             <div>
@@ -59,10 +62,14 @@ export default function Product() {
                     <div id={`carouselProductImage${id}`} className="carousel slide carousel-fade shadow">
                         <InnerCarousel className="carousel-inner rounded">
                             <div className="carousel-item active">
-                                <ImgCarousel className="card-img" src={thumbnail} alt="Second slide"/>
+                                <img className="card-img" src={thumbnail} alt="Second slide"/>
                             </div>
                             {
-                                images.map(image => <div className="carousel-item" key={image}><ImgCarousel className="card-img" src={image} alt={image}/></div>)
+                                images.map(
+                                    image => <div className="carousel-item" key={image}>
+                                                <img className="card-img" src={image} alt={image}/>
+                                            </div>
+                                        )
                             }
                         </InnerCarousel>
                         <button className="carousel-control-prev" type="button" data-bs-target={`#carouselProductImage${id}`} data-bs-slide="prev">
@@ -77,11 +84,12 @@ export default function Product() {
                 </div>
                 <div className="m-auto">
                     <div className="text-center rounded px-2 py-3 w-100" style={{backgroundColor:"#BFEAF5",borderColor:"#91D8E4"}}>
-                        <span className="fs-2 text-dark m-3">{price}-<span className="fs-4 text-danger text-decoration-line-through">{discountPercentage}%</span></span>
+                        <span className="fs-2 text-dark m-3">{price}$-<span className="fs-4 text-danger text-decoration-line-through">{discountPercentage}%</span></span>
                         <div className="d-flex w-100 mt-3">
                             <span className="w-50 m-auto">Quantity : </span>
-                            <input type="range" max={stock} className="form-control w-50" onChange={(e)=>{setRange(e.target.value)}} value={range}/>
-                            <span className="m-auto ps-3">{range}</span>
+                            <button className="p-3 rounded border" onClick={()=>(range > 1 && setRange(prev=>prev-1))}><SlArrowLeft /></button>
+                            <span className="m-auto px-3">{range}</span>
+                            <button className="p-3 rounded border" onClick={()=>(range < stock && setRange(prev=>prev+1))}><SlArrowRight /></button>
                         </div>
                         <div className="mt-3">
                             {stock > 0 ? `in stock : ${stock}`: "not in stock"}
