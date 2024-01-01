@@ -6,13 +6,13 @@ const LiNav = styled.li`
     color: black;
     // border: solid 0.5px white;
     text-align: center;
-    /* border-radius: 10px;
+    border-radius: 10px;
     :hover {
         text-align: center;
         border-radius: 10px;
         background-color: white;
         color: black;
-    } */
+    }
 `
 
 export default function Nav() {
@@ -25,7 +25,7 @@ export default function Nav() {
                 <ul className="navbar-nav nav w-100 flex-column justify-content-around">
                     {
                         navItems.map(
-                            nav=><LiNav className="nav-item"><Link className="nav-link" to={`Home/${nav}`}>{nav}</Link></LiNav>
+                            nav=><LiNav className="nav-item" key={nav}><Link className="nav-link" to={`Home/${nav}`}>{nav}</Link></LiNav>
                         )
                     }
                 </ul>

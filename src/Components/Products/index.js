@@ -49,7 +49,7 @@ export default function Product() {
     }
 
     return (
-        <Section className="col-lg-9 col-md-9 col-sm-12 mt-4 mb-2 rounded" style={{backgroundColor: "#BFEAF5"}}>
+        <Section className="col-lg-9 col-md-9 mb-2 rounded mx-auto" style={{backgroundColor: "#BFEAF5"}}>
             <div>
                 <span className="text-center fs-1 d-block mt-3">{title}</span>
                 <span className="text-center fs-4 d-block mt-3 text-muted">{description}</span>

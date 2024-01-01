@@ -16,7 +16,7 @@ const Card = ({data,data2}) =>{
     }
 
     return (
-        <div className="px-3 py-4 my-3 rounded"  style={{backgroundColor: "#BFEAF5",borderColor: "#91D8E4"}}>
+        <div className="px-3 py-4 mb-3 rounded"  style={{backgroundColor: "#BFEAF5",borderColor: "#91D8E4"}}>
             <div className="d-flex justify-content-between text-center">
                 <Link to={`/${category}/${id}`} className="card-img w-50">
                     <img src={thumbnail} alt="thumbnail" className="rounded" style={{height: "10rem"}} />

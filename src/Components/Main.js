@@ -8,8 +8,8 @@ export default function Filter() {
     const {category} = useParams()
     
     return (
-        <Section className="col-lg-9 col-md-9 col-sm-12">
-            <div className="row justify-content-center pt-3">
+        <Section className="col-lg-9 col-md-9 col-sm-12 mx-auto">
+            <div className="row justify-content-center">
                 {products.products.filter(p=>p.category === `${category}`).map(
                     product => <ProductCard prodData={product} key={product.id} />
                 )}

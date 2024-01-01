@@ -4,10 +4,14 @@ const Section = styled.section`
     /* max-height: 77.5vh;  */
     overflow: scroll;
     overflow-x: hidden;
+    // margin: auto;
+    margin-top: 1.5rem;
     @media (min-width: 768px){
-        height: 77.5vh!important;
+        height: 74vh!important;
+        max-width: 72%;
     }
     @media (max-width: 767px){
+        max-width: 90%;
         max-height: none!important;
     }
 `

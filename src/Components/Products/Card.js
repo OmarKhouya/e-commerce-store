@@ -3,18 +3,18 @@ import styled from "styled-components";
 import RatingStars from "./RatingStars";
 
 const CardImg = styled.img`
-    height: 10rem;
+    // height: 7rem;
     @media only screen and (max-width:767px) and (min-width:396px){
         height: auto;
     }
     @media only screen and (min-width:1214px){
-        height: 13rem;
+        height: 9rem;
     }
 
 `
 
 const CardBody = styled.div`
-    height: 10rem;
+    height: 10rem!important;
 
 `
 
@@ -22,7 +22,7 @@ export default function ProductCard({prodData}) {
 
     const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = prodData
     return (
-        <div className="col-lg-4 col-md-6 col-sm-12" key={id}>
+        <div className="col-lg-3 col-md-6 col-sm-4" key={id}>
             <div className="card my-2 shadow mx-2" style={{backgroundColor: "#BFEAF5",borderColor: "#91D8E4"}}>
                 <Link className="card-header" to={`/${category}/${id}`}>
                     <CardImg src={thumbnail} alt="thumbnail" className="card-img-top"/>
