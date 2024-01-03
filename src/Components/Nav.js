@@ -25,7 +25,9 @@ export default function Nav() {
                 <ul className="navbar-nav nav w-100 flex-column justify-content-around">
                     {
                         navItems.map(
-                            nav=><LiNav className="nav-item" key={nav}><Link className="nav-link" to={`Home/${nav}`}>{nav}</Link></LiNav>
+                            nav=><LiNav className="nav-item" key={nav}>
+                                <Link className="nav-link" to={`Home/${nav}`}>{nav}</Link>
+                            </LiNav>
                         )
                     }
                 </ul>

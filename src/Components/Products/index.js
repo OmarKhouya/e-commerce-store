@@ -62,12 +62,12 @@ export default function Product() {
                     <div id={`carouselProductImage${id}`} className="carousel slide carousel-fade shadow">
                         <InnerCarousel className="carousel-inner rounded">
                             <div className="carousel-item active">
-                                <img className="card-img" src={thumbnail} alt="Second slide"/>
+                                <img className="card-img" src={thumbnail} alt="thumbnail"/>
                             </div>
                             {
                                 images.map(
                                     image => <div className="carousel-item" key={image}>
-                                                <img className="card-img" src={image} alt={image}/>
+                                                <img className="card-img" src={image} alt="Product"/>
                                             </div>
                                         )
                             }
