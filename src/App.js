@@ -9,6 +9,7 @@ import Product from './Components/Products'
 import NotFoundPage from './Components/Pages/notFoundPage'
 import Cart from './Components/Cart'
 import About from './Components/Pages/About'
+import Contact from './Components/Pages/Contact'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
               <Route path="/:category/:identify" element={<Product />}/>
               <Route path="/Cart" element={<Cart />}/>
               <Route path="/About" element={<About />}/>
+              <Route path="/Contact" element={<Contact />}/>
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>

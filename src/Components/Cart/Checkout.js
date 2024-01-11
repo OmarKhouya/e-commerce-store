@@ -30,6 +30,7 @@ export default function Checkout({data,data2}) {
                     if (match) {
                         return <span className='d-block text-center my-2 fs-5' key={d.id}><CgArrowLongRight className='me-3 mb-1'/>{d.price} $ x {match.quantity} </span>
                     }
+                    return <></>
                 })
             }
             <span className='d-block text-center'>Total : {total}$</span>

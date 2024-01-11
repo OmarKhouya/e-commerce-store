@@ -17,7 +17,9 @@ export default function Cart() {
             <div className='row'>
                 <div className='col-lg-8 col-sm-12 '>
                     {
-                        inCartData.map((cp,index)=><Card data={cp} key={index} data2={inCartIdentifies}/>)
+                        inCartData.length>0 ?
+                            inCartData.map((cp,index)=><Card data={cp} key={index} data2={inCartIdentifies}/>) : <h2>U have nothing in cart</h2>
+                        
                     }
                 </div>
                 <div className='col-lg-4 col-md-12 col-sm-12 mb-3'>
