@@ -16,6 +16,7 @@ export const getAllData = () =>{
     return async(dispatch,getState) =>{
         const response = await fetch('https://dummyjson.com/products')
         const products = await response.json()
+        console.log(getState)
         dispatch({
             type: "GET_ALL_DATA",
             payload: products
