@@ -7,7 +7,7 @@ const Section = styled.section`
     // margin: auto;
     margin-top: 1.5rem;
     @media (min-width: 768px){
-        height: 73.1vh!important;
+        max-height: 100vh!important;
         max-width: 72%;
     }
     @media (max-width: 767px){

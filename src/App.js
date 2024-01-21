@@ -17,7 +17,7 @@ export default function App() {
       <div className='w-100 overflow-hidden' >
         <Header />
           <main className='row p-0' >
-            <Nav/>
+            <Nav />
             <Routes>
               <Route path="/" element={<Main />}/>
               <Route path="/Home/:category" element={<Filter />}/>

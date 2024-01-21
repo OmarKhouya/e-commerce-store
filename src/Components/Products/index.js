@@ -29,8 +29,27 @@ export default function Product() {
     
     const {identify} = useParams()
     const [range,setRange] = useState(1)
-
-    const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = products.products[identify-1]
+    const [thisProduct,setthisProduct] = useState({products: {id:1,title:null,description:null,price:null,discountPercentage:null,rating:null,stock:null,brand:null,category:null,thumbnail:null,images:[]}})
+    const [data,setData] = useState([])
+    useEffect(()=>{
+        const getData = async () =>{
+            const resp = await fetch(`https://dummyjson.com/products/${identify}`)
+            console.log(resp)
+            setthisProduct(await resp.json())
+        }
+        getData()
+        console.log(thisProduct)
+    },[])
+    /* useEffect(()=>{
+        const getData = async () =>{
+            const resp = await fetch(`https://dummyjson.com/products/category/${thisProduct.products.category}`)
+            setData(await resp.json())
+        }
+        getData()
+        console.log(data)
+    },[]) */
+    console.log(thisProduct)
+    const {id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images} = thisProduct.products
 
     const dispatch = useDispatch();
     const inCartIds = useSelector(state=>state.inCartIds.inCartIdentifies);
@@ -108,7 +127,7 @@ export default function Product() {
                     <hr className="mx-4 w-50 " />
                 </div>
                 <div className="row justify-content-evenly">
-                    {products.products.filter(p=>p.category===category&&p.id !== id).slice(0,3).map((p,index)=><ProductCard prodData={p} key={index}/>)}
+                    
                 </div>
             </div>
         </Section>

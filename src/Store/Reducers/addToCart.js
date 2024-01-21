@@ -10,5 +10,5 @@ const addToCart = (state={inCartIdentifies:[]},action)=>{
             return state
     }
 }
-
+        
 export default addToCart
