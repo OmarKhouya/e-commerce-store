@@ -12,23 +12,33 @@ export const removeFromCart = (id)=>{
     }
 }
 
-export const getAllData = () =>{
+export const getAllData = (display) =>{
     return async(dispatch,getState) =>{
-        const response = await fetch('https://dummyjson.com/products')
+        const response = await fetch('https://dummyjson.com/products?limit='+display.limit)
         const products = await response.json()
-        console.log(getState)
         dispatch({
             type: "GET_ALL_DATA",
             payload: products
         })
     }
 }
+
 export const getDataById = (id) =>{
     return async(dispatch,getState) =>{
         const response = await fetch('https://dummyjson.com/products/'+id)
         const product = await response.json()
         dispatch({
             type: "GET_DATA_BY_ID",
+            payload: product
+        })
+    }
+}
+export const getDataByCategory = (category,display) =>{
+    return async(dispatch,getState) =>{
+        const response = await fetch('https://dummyjson.com/products/category/'+category+'?limit='+display.limit)
+        const product = await response.json()
+        dispatch({
+            type: "GET_DATA_BY_CATEGORY",
             payload: product
         })
     }

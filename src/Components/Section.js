@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const Section = styled.section`
-    /* max-height: 77.5vh;  */
+/* const Section = styled.section`
+    max-height: 77.5vh; 
     overflow: scroll;
     overflow-x: hidden;
     // margin: auto;
@@ -14,6 +14,21 @@ const Section = styled.section`
         max-width: 90%;
         max-height: none!important;
     }
-`
+` */
 
-export default Section
+const Section = styled.section`
+  /* max-height: 77.5vh;  */
+  overflow: scroll;
+  overflow-x: hidden;
+  // margin: auto;
+  margin-top: 1.5rem;
+  @media (min-width: 768px) {
+    height: 73.1vh !important;
+    max-width: 72%;
+  }
+  @media (max-width: 767px) {
+    max-width: 90%;
+    max-height: none !important;
+  }
+`;
+export default Section;
