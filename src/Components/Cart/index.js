@@ -46,7 +46,7 @@ export default function Cart() {
         <div className="col-lg-8 col-sm-12 ">
           {inCartData.length > 0 ? (
             inCartData.map((cp, index) => (
-              <Card key={index} data={cp}  data2={inCartIdentifies} />
+              <Card key={index} data={cp} />
             ))
           ) : (
             <h2>U have nothing in cart</h2>

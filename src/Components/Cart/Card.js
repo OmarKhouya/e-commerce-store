@@ -1,6 +1,6 @@
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../store/actions";
+import { getDataById, removeFromCart } from "../../store/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -21,13 +21,11 @@ const Card = ({ data, data2 }) => {
 
   const dispatch = useDispatch();
 
-  const infos = data2.filter((d) => d.id === id);
   const product = useSelector((state) => state.prods.product);
-  const dispatch 
   useEffect(() => {
-
-  }, []);
-  const Quantity = infos[0].quantity;
+    dispatch(getDataById(id))
+  }, [dispatch,id]);
+  const Quantity = product.quantity;
   const removeItem = () => {
     dispatch(removeFromCart(id));
   };
