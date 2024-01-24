@@ -42,7 +42,7 @@ export default function Product() {
 
   useEffect(() => {
     if (product && product.category) {
-      dispatch(getDataByCategory(product.category,{limit: 3}));
+      dispatch(getDataByCategory(product.category, { limit: 3 }));
     }
   }, [dispatch, product]);
 
@@ -195,13 +195,15 @@ export default function Product() {
           <hr className="mx-4 w-50 " />
         </div>
         <div className="row justify-content-evenly">
-          {products ? products.products.map((p, index) => (
+          {products ? (
+            products.products.map((p, index) => (
               <ProductCard prodData={p} key={index} />
-            )) :
+            ))
+          ) : (
             <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
+              <span className="visually-hidden">Loading...</span>
             </div>
-            }
+          )}
         </div>
       </div>
     </Section>

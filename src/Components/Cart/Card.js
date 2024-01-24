@@ -23,8 +23,8 @@ const Card = ({ data, data2 }) => {
 
   const product = useSelector((state) => state.prods.product);
   useEffect(() => {
-    dispatch(getDataById(id))
-  }, [dispatch,id]);
+    dispatch(getDataById(id));
+  }, [dispatch, id]);
   const Quantity = product.quantity;
   const removeItem = () => {
     dispatch(removeFromCart(id));

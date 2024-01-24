@@ -1,81 +1,90 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useFetch } from "../Includes/useFetch";
 import { useEffect, useState } from "react";
-
+import useWindowSize from "../Includes/getWindowSize";
 const LiNav = styled.li`
-  text-decoration: none;
-  color: black;
-  // border: solid 0.5px white;
   text-align: center;
   border-radius: 10px;
+  list-style: none;
+  margin: 0;
+  flex-grow: 1;
+  :only-child {
+    text-decoration: none;
+    color: black;
+  }
+
   :hover {
-    text-align: center;
-    border-radius: 10px;
     background-color: white;
     color: black;
   }
 `;
 
-/* export default function Nav() {
-    const [data,setData] = useState([])
-    useEffect(()=>{
-        const getData = async () =>{
-            const resp = await fetch(`https://dummyjson.com/products/categories`)
-            setData(await resp.json())
-        }
-        getData()
-    },[])
+const NavWrapper = styled.nav`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+export default function Nav({ navbarToggle }) {
+  const [screenSize] = useWindowSize();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const resp = await fetch(`https://dummyjson.com/products/categories`);
+        const jsonData = await resp.json();
+        setData(jsonData);
+      } catch (error) {
+        setData(undefined);
+        console.error("Error fetching data:", error);
+      }
+    };
+    getData();
+  }, []);
+  if (!Array.isArray(data)) {
     return (
-        <nav className="col-lg-3 col-md-3 col-sm-12 mt-4 mb-2">
-            <div className="mx-3 p-3 rounded d-flex "  style={{backgroundColor: "#BFEAF5",minHeight: "100%"}}>
-                <ul className="navbar-nav nav w-100 flex-column justify-content-around">
-                    {
-                        data.map(
-                            nav=><LiNav className="nav-item" key={nav}>
-                                <Link className="nav-link" to={`Home/${nav}`}>{nav}</Link>
-                            </LiNav>
-                        )
-                    }
-                </ul>
+      (navbarToggle || screenSize.width > 991) && (
+        <NavWrapper className="col-lg-3 col-md-12 col-sm-12 mt-4 mb-2 ">
+          <div
+            className="mx-3 p-3 rounded d-flex flex-column w-100"
+            style={{ backgroundColor: "#BFEAF5", minHeight: "100%" }}
+          >
+            <p className="text-muted text-center ">Which category?</p>
+            <div
+              className="d-flex justify-content-center align-items-center"
+              style={{ minHeight: "100%" }}
+            >
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
             </div>
-        </nav>
-        
-    )
-}
- */
-
-export default function Nav() {
-  
-
-  const navItems = [
-    "smartphones",
-    "laptops",
-    "home-decoration",
-    "groceries",
-    "skincare",
-    "fragrances",
-    "fruits",
-  ];
-
+          </div>
+        </NavWrapper>
+      )
+    );
+  }
   return (
-    navbarToggle && (
-      <nav className="col-lg-3 col-md-3 col-sm-12 mt-4 mb-2">
+    (navbarToggle || screenSize.width > 991) && (
+      <div className="col-lg-3 col-md-12 col-sm-12 mt-4 mb-2">
         <div
-          className="mx-3 p-3 rounded d-flex "
+          className="mx-3 p-3 rounded d-flex flex-column"
           style={{ backgroundColor: "#BFEAF5", minHeight: "100%" }}
         >
+          <p className="text-muted text-center ">Which category?</p>
           <ul className="navbar-nav nav w-100 flex-column justify-content-around">
-            {navItems.map((nav) => (
-              <LiNav className="nav-item" key={nav}>
-                <Link className="nav-link" to={`Home/${nav}`}>
-                  {nav}
-                </Link>
-              </LiNav>
-            ))}
+            {Array.isArray(data) &&
+              data.slice(0, 15).map((nav) => (
+                <LiNav className="nav-item " key={nav}>
+                  <Link className="nav-link rounded" to={`Home/${nav}`}>
+                    {nav}
+                  </Link>
+                </LiNav>
+              ))}
           </ul>
         </div>
-      </nav>
+      </div>
     )
   );
 }

@@ -2,7 +2,7 @@ import ProductCard from "./Products/Card";
 import products from "../data.json";
 import Section from "./Section";
 import { useEffect, useState } from "react";
-import DataDisplay from "./dataDisplay";
+import DataDisplay from "./DataDisplay";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllData } from "../store/actions";
 
@@ -19,15 +19,15 @@ export default function Main() {
         className="d-flex justify-content-center align-items-center"
         style={{ color: "#BFEAF5" }}
       >
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </Section>
     );
   }
   return (
     <>
-      <Section className="col-lg-9 col-md-9 col-sm-12 mx-auto">
+      <Section className="col-lg-9 col-md-12 col-sm-12 mx-auto">
         <DataDisplay setDisplay={setDisplay} />
         <div className="row justify-content-evenly">
           {products &&

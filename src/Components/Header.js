@@ -6,10 +6,24 @@ import { BsCart3 } from "react-icons/bs";
 import { MdOutlineMessage } from "react-icons/md";
 import { TbInfoSquareRounded } from "react-icons/tb";
 import { FaBars } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Header() {
-  const [navbarToggle, setNavbarToggle] = useState(false);
+export default function Header({ setNavbarToggle }) {
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <header
       className="shadow sticky-top top-0 w-100"
@@ -20,14 +34,17 @@ export default function Header() {
           <Link to={"/"}>
             <Logo style={{ width: "100px", height: "50px" }} />
           </Link>
-          <button
-            type="button"
-            className="navbar-toggler me-3"
-            data-bs-toggle="collapse"
-            data-bs-target="#navOne"
-          >
-            <FaBars />
-          </button>
+          {screenSize.width <= 991 ? (
+            <button
+              type="button"
+              className="btn btn-outline-dark"
+              onClick={() => setNavbarToggle((prev) => !prev)}
+            >
+              filter
+            </button>
+          ) : (
+            <span></span>
+          )}
         </div>
         <button
           type="button"
