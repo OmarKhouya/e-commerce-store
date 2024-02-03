@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { RiSearchFill } from "react-icons/ri";
+
 export default function DataDisplay({ setDisplay }) {
   const range = [16, 32, 64, 100];
   const [data, setData] = useState({ limit: 16 });

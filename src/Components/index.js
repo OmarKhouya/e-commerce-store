@@ -1,9 +1,9 @@
-import ProductCard from "./Products/Card";
-import products from "../data.json";
-import Section from "./Section";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import DataDisplay from "./DataDisplay";
-import { useSelector, useDispatch } from "react-redux";
+
+import DataDisplay from "./Layout/DataDisplay";
+import ProductCard from "./Products/Card";
+import Section from "./Layout/Section";
 import { getAllData } from "../store/actions";
 
 export default function Main() {

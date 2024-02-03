@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import Card from "./Card";
-import Section from "../Section";
-import { getAllData } from "../../store/actions";
 import Receipt from "./Receipt";
+import Section from "../Layout/Section";
+import { getAllData } from "../../store/actions";
 
 export default function Cart() {
   const [inCartData, setInCartData] = useState();
@@ -15,7 +16,6 @@ export default function Cart() {
     dispatch(getAllData({ limit: 100 }));
   }, [dispatch]);
   const products = useSelector((state) => state.prods.products);
-
   useEffect(() => {
     if (products) {
       setInCartData(
@@ -23,7 +23,6 @@ export default function Cart() {
           inCartIdentifies.some((item) => item.id === p.id)
         )
       );
-      console.log(products);
     }
   }, [products, inCartIdentifies]);
 
@@ -44,7 +43,7 @@ export default function Cart() {
       <div className="row">
         <div className="col-lg-8 col-sm-12 ">
           {inCartData.length > 0 ? (
-            inCartData.map((cp, index) => <Card key={index} data={cp} />)
+            inCartData.map((cardData, index) => <Card key={index} data={cardData} />)
           ) : (
             <div
               className="text-center justify-content-center align-items-center d-flex rounded shadow mb-3"

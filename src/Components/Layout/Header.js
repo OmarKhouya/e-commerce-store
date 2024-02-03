@@ -1,12 +1,12 @@
-import { ReactComponent as Logo } from "../Logo.svg";
+import { ReactComponent as Logo } from "../../Logo.svg";
 import { Link } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
 import { LuHome } from "react-icons/lu";
 import { BsCart3 } from "react-icons/bs";
 import { MdOutlineMessage } from "react-icons/md";
 import { TbInfoSquareRounded } from "react-icons/tb";
 import { FaBars } from "react-icons/fa6";
-import { useEffect, useState } from "react";
 
 export default function Header({ setNavbarToggle }) {
   const [screenSize, setScreenSize] = useState({

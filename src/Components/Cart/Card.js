@@ -4,7 +4,7 @@ import { getDataById, removeFromCart } from "../../store/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const Card = ({ data, data2 }) => {
+const Card = ({ data,  }) => {
   const {
     id,
     title,

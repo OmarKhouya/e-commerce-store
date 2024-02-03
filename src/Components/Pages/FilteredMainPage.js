@@ -1,11 +1,11 @@
-import ProductCard from "./Products/Card";
-import products from "../data.json";
-import { useParams } from "react-router";
-import Section from "./Section";
-import { useEffect, useState } from "react";
-import DataDisplay from "./DataDisplay";
 import { useDispatch, useSelector } from "react-redux";
-import { getDataByCategory } from "../store/actions";
+import { useEffect, useState } from "react";
+
+import DataDisplay from "../Layout/DataDisplay";
+import ProductCard from "../Products/Card";
+import Section from "../Layout/Section";
+import { getDataByCategory } from "../../store/actions";
+import { useParams } from "react-router";
 
 export default function Filter() {
   const { category } = useParams();

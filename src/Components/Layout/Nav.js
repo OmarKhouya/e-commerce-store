@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import useWindowSize from "../Includes/getWindowSize";
+import useWindowSize from "../../Includes/getWindowSize";
 const LiNav = styled.li`
   text-align: center;
   border-radius: 10px;

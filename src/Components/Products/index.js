@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
-
-import RatingStars from "./RatingStars";
-import ProductCard from "./Card";
-import Section from "../Section";
-
-import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getDataByCategory, getDataById } from "../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 import { FaCartPlus } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { SlArrowRight } from "react-icons/sl";
+import ProductCard from "./Card";
+import RatingStars from "./RatingStars";
+import Section from "../Layout/Section";
 import { SlArrowLeft } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
+import styled from "styled-components";
 
 const MergeDiv = styled.div`
   display: flex;

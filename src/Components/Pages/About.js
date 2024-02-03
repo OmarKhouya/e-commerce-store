@@ -1,4 +1,4 @@
-import Section from "../Section";
+import Section from "../Layout/Section";
 
 export default function About() {
   return (
