@@ -26,11 +26,11 @@ export default function Receipt({ data, data2 }) {
     >
       <span className="d-block text-center fs-3">receipt</span>
       <hr />
-      {data.map((d) => {
+      {data.map((d,index) => {
         const match = data2.find((item) => item.id === d.id);
         if (match) {
           return (
-            <span className="d-block text-center my-2 fs-5" key={d.id}>
+            <span className="d-block text-center my-2 fs-5" key={index}>
               <CgArrowLongRight className="me-3 mb-1" />
               {d.price} $ x {match.quantity}{" "}
             </span>

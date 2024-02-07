@@ -4,7 +4,7 @@ import { getDataById, removeFromCart } from "../../store/actions";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const Card = ({ data,  }) => {
+const Card = ({ data }) => {
   const {
     id,
     title,
@@ -20,12 +20,10 @@ const Card = ({ data,  }) => {
   } = data;
 
   const dispatch = useDispatch();
-
-  const product = useSelector((state) => state.prods.product);
   useEffect(() => {
     dispatch(getDataById(id));
   }, [dispatch, id]);
-  const Quantity = product.quantity;
+
   const removeItem = () => {
     dispatch(removeFromCart(id));
   };
@@ -48,7 +46,6 @@ const Card = ({ data,  }) => {
           <p>{title}</p>
           <p>{brand}</p>
           <p>{price} $</p>
-          <p>Quantity : {Quantity}</p>
         </div>
         <div>
           <button

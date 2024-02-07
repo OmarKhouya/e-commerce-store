@@ -8,7 +8,7 @@ const CardImg = styled.img`
     height: auto;
   }
   @media only screen and (min-width: 1214px) {
-    height: 9rem;
+    height: 14rem;
   }
 `;
 
@@ -20,21 +20,17 @@ export default function ProductCard({ prodData }) {
   const {
     id,
     title,
-    description,
     price,
     discountPercentage,
     rating,
-    stock,
-    brand,
     category,
     thumbnail,
-    images,
   } = prodData;
   return (
-    <div className="col-lg-3 col-md-4 col-sm-4" key={id}>
+    <div className="col-lg-4 col-md-4 col-sm-4" key={id}>
       <div
-        className="card my-2 shadow mx-2"
-        style={{ backgroundColor: "#BFEAF5", borderColor: "#91D8E4" }}
+        className="card my-2 shadow mx-2 rounded"
+        style={{ backgroundColor: "#B9EDDD" /*  borderColor: "#E6A4B4"  */ }}
       >
         <Link className="card-header" to={`/${category}/${id}`}>
           <CardImg src={thumbnail} alt="thumbnail" className="card-img-top" />
@@ -50,9 +46,6 @@ export default function ProductCard({ prodData }) {
           <div className="mt-1">
             <RatingStars rating={rating} /> ({rating})
           </div>
-          {/* <>
-                        {stock > 0 ? <span className="text-success">in stock</span>:<span className="text-danger">out of stock</span>}
-                    </> */}
         </CardBody>
         <div className="p-3">
           <Link

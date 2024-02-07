@@ -9,7 +9,7 @@ const addToCart = (state = { inCartIdentifies: [] }, action) => {
       return {
         ...state,
         inCartIdentifies: [
-          ...state.inCartIdentifies.filter((id) => id.id !== action.payload),
+          ...state.inCartIdentifies.filter((prod) => prod.id !== action.payload),
         ],
       };
     default:

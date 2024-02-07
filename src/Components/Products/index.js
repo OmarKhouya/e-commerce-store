@@ -2,15 +2,16 @@ import { Link, useParams } from "react-router-dom";
 import { addToCart, getDataByCategory, getDataById } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import { FaCartPlus } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import ProductCard from "./Card";
-import RatingStars from "./RatingStars";
-import Section from "../Layout/Section";
 import { SlArrowLeft } from "react-icons/sl";
 import { SlArrowRight } from "react-icons/sl";
-import styled from "styled-components";
+
+import Section from "../Layout/Section";
+import ProductCard from "./Card";
+import RatingStars from "./RatingStars";
 
 const MergeDiv = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ export default function Product() {
 
   useEffect(() => {
     if (product && product.category) {
-      dispatch(getDataByCategory(product.category, { limit: 3 }));
+      dispatch(getDataByCategory(product.category, { limit: 4 }));
     }
   }, [dispatch, product]);
 
@@ -73,8 +74,6 @@ export default function Product() {
     discountPercentage,
     rating,
     stock,
-    brand,
-    category,
     thumbnail,
     images,
   } = product;
@@ -89,7 +88,7 @@ export default function Product() {
 
   return (
     <Section
-      className="col-lg-9 col-md-9 mb-2 rounded mx-auto"
+      className="col-lg-8 col-md-9 mb-2 rounded mx-auto"
       style={{ backgroundColor: "#BFEAF5" }}
     >
       <div>
@@ -195,7 +194,7 @@ export default function Product() {
         <div className="row justify-content-evenly">
           {products ? (
             products.products.map((p, index) => (
-              <ProductCard prodData={p} key={index} />
+              p.id !== id && <ProductCard prodData={p} key={index} />
             ))
           ) : (
             <div className="spinner-border" role="status">

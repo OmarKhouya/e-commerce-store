@@ -49,7 +49,7 @@ export default function Nav({ navbarToggle }) {
         <NavWrapper className="col-lg-3 col-md-12 col-sm-12 mt-4 mb-2 ">
           <div
             className="mx-3 p-3 rounded d-flex flex-column w-100"
-            style={{ backgroundColor: "#BFEAF5", minHeight: "100%" }}
+            style={{ backgroundColor: "#569DAA", minHeight: "100%" }}
           >
             <p className="text-muted text-center ">Which category?</p>
             <div
@@ -70,7 +70,7 @@ export default function Nav({ navbarToggle }) {
       <div className="col-lg-3 col-md-12 col-sm-12 mt-4 mb-2">
         <div
           className="mx-3 p-3 rounded d-flex flex-column"
-          style={{ backgroundColor: "#BFEAF5", minHeight: "100%" }}
+          style={{ backgroundColor: "#87CBB9", minHeight: "100%" }}
         >
           <p className="text-muted text-center ">Which category?</p>
           <ul className="navbar-nav nav w-100 flex-column justify-content-around">

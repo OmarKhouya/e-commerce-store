@@ -27,7 +27,7 @@ export default function Header({ setNavbarToggle }) {
   return (
     <header
       className="shadow sticky-top top-0 w-100"
-      style={{ backgroundColor: "#91D8E1" }}
+      style={{ backgroundColor: "#569DAA" }}
     >
       <nav className="navbar navbar-expand-sm d-flex justify-content-between ">
         <div className="navbar-brand">
@@ -37,7 +37,7 @@ export default function Header({ setNavbarToggle }) {
           {screenSize.width <= 991 ? (
             <button
               type="button"
-              className="btn btn-outline-dark"
+              className="btn btn-dark"
               onClick={() => setNavbarToggle((prev) => !prev)}
             >
               filter
@@ -48,31 +48,31 @@ export default function Header({ setNavbarToggle }) {
         </div>
         <button
           type="button"
-          className="navbar-toggler me-3"
+          className="navbar-toggler me-3 text-white border-white"
           data-bs-toggle="collapse"
           data-bs-target="#navOne"
         >
           <FaBars />
         </button>
-        <div className="collapse navbar-collapse " id="navOne">
+        <div className="collapse navbar-collapse" id="navOne">
           <ul className="d-flex list-unstyled justify-content-evenly w-100 mb-0">
             <li className="">
-              <Link to={"/"} className="nav-link text-dark ">
+              <Link to={"/"} className="nav-link text-white">
                 <LuHome style={{ marginBottom: "3px" }} /> Home
               </Link>
             </li>
             <li className="">
-              <Link to={"/Cart"} className="nav-link text-dark">
+              <Link to={"/Cart"} className="nav-link text-white">
                 <BsCart3 style={{ marginBottom: "2px" }} /> Cart
               </Link>
             </li>
             <li className="">
-              <Link to={"/Contact"} className="nav-link text-dark">
+              <Link to={"/Contact"} className="nav-link text-white">
                 <MdOutlineMessage style={{ marginBottom: "-1px" }} /> Contact
               </Link>
             </li>
             <li className="">
-              <Link to={"/About"} className="nav-link text-dark">
+              <Link to={"/About"} className="nav-link text-white">
                 <TbInfoSquareRounded style={{ marginBottom: "3px" }} /> About
               </Link>
             </li>

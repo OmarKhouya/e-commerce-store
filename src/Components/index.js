@@ -27,7 +27,7 @@ export default function Main() {
   }
   return (
     <>
-      <Section className="col-lg-9 col-md-12 col-sm-12 mx-auto">
+      <Section className="col-lg-8 col-md-12 col-sm-12 mx-auto">
         <DataDisplay setDisplay={setDisplay} />
         <div className="row justify-content-evenly">
           {products &&

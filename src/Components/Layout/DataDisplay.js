@@ -7,16 +7,16 @@ export default function DataDisplay({ setDisplay }) {
   const [data, setData] = useState({ limit: 16 });
   useEffect(() => {
     setDisplay(data);
-  }, [data]);
+  }, [data,setDisplay]);
   return (
-    <nav className="">
-      <div className="m-2 p-3 border rounded d-flex justify-content-between">
-        <div className="w-75 input-group">
+    <nav className="" >
+      <div className="m-2 p-3 rounded d-flex justify-content-end" style={{backgroundColor: "#87CBB9"}}>
+        {/* <div className="w-75 input-group">
           <input type="text" className="form-control" />
           <button type="button" className="btn btn-dark">
             <RiSearchFill />
           </button>
-        </div>
+        </div> */}
         <div className="dropdown active">
           <button
             className="dropdown-toggle text-black form-control"
