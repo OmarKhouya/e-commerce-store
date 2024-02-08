@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Card from "./Card";
@@ -12,8 +12,8 @@ export default function Cart() {
   const [inCartData, setInCartData] = useState();
 
   // Redux selectors and dispatch hook
-  const inCartIdentifies = useSelector(
-    (state) => state.inCartIds.inCartIdentifies
+  const inCartIdentifiers = useSelector(
+    (state) => state.inCartIds.inCartIdentifiers
   );
   const dispatch = useDispatch();
 
@@ -30,11 +30,11 @@ export default function Cart() {
     if (products) {
       setInCartData(
         products.products.filter((p) =>
-          inCartIdentifies.some((item) => item.id === p.id)
+          inCartIdentifiers.some((item) => item.id === p.id)
         )
       );
     }
-  }, [products, inCartIdentifies]);
+  }, [products, inCartIdentifiers]);
 
   // Loading spinner while data is being fetched
   if (!inCartData) {
@@ -75,7 +75,7 @@ export default function Cart() {
         </div>
         <div className="col-lg-4 col-md-12 col-sm-12 mb-3">
           {/* Render the receipt component with cart data */}
-          <Receipt data={inCartData} data2={inCartIdentifies} />
+          <Receipt data={inCartData} data2={inCartIdentifiers} />
         </div>
       </div>
     </Section>

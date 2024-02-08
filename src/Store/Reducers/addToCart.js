@@ -12,7 +12,7 @@ const addToCart = (state = { inCartIdentifiers: [] }, action) => {
       return {
         ...state,
         inCartIdentifiers: [
-          ...state.inCartIdentifiers.filter((id) => id !== action.payload),
+          ...state.inCartIdentifiers.filter((prod) => prod.id !== action.payload),
         ],
       };
     // Default case: return the current state if the action type is not recognized

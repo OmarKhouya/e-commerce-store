@@ -41,7 +41,7 @@ export default function Product() {
   }, [dispatch, identify]);
 
   const product = useSelector((state) => state.prods.product);
-  const inCartIds = useSelector((state) => state.inCartIds.inCartIdentifies);
+  const inCartIds = useSelector((state) => state.inCartIds.inCartIdentifiers);
 
   useEffect(() => {
     if (product && product.category) {

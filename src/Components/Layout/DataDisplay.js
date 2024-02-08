@@ -1,40 +1,48 @@
 import { useEffect, useState } from "react";
 import { getSearchData } from "../../store/actions";
-// import { RiSearchFill } from "react-icons/ri";
-// import { IoRefreshCircleOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 
-export default function DataDisplay({ setDisplay,category }) {
+// Component for displaying data, handling search, and setting display limit
+export default function DataDisplay({ setDisplay, category }) {
+  // Array of display limit options
   const range = [16, 32, 64, 100];
-  
+
+  // State to manage the data and limit for display
   const [data, setData] = useState({ limit: 16 });
+
+  // Update the display limit when data changes
   useEffect(() => {
     setDisplay(data);
   }, [data, setDisplay]);
-  
+
+  // Redux dispatch hook
   const dispatch = useDispatch();
 
-  const handleSearch = (e)=>{
-    dispatch(getSearchData(e.target.value)) 
-  }
+  // Handler function for search input
+  const handleSearch = (e) => {
+    dispatch(getSearchData(e.target.value));
+  };
 
+  // Render the data display navigation
   return (
     <nav className="">
       <div
         className="m-2 p-3 rounded d-flex justify-content-between"
         style={{ backgroundColor: "#87CBB9" }}
       >
+        {/* Search input */}
         <div className="w-75 input-group">
           <input
             type="text"
             className="form-control"
-            placeholder={`search here! ${category !== undefined ? "("+category+")" : ""}`}
+            placeholder={`search here! ${
+              category !== undefined ? "(" + category + ")" : ""
+            }`}
             onChange={handleSearch}
           />
-          {/* <button type="button" className="btn" onClick={handleSearch}>
-            <IoRefreshCircleOutline />
-          </button> */}
         </div>
+
+        {/* Dropdown for changing display limit */}
         <div className="dropdown active">
           <button
             className="dropdown-toggle text-black form-control"
