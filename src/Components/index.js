@@ -6,13 +6,23 @@ import ProductCard from "./Products/Card";
 import Section from "./Layout/Section";
 import { getAllData } from "../store/actions";
 
+// Main component for displaying products on the main page
 export default function Main() {
+  // State for managing display settings
   const [display, setDisplay] = useState({ limit: 16 });
+
+  // Redux dispatch function
   const dispatch = useDispatch();
+
+  // Fetching products data from the Redux store
   const products = useSelector((state) => state.prods.products);
+
+  // Fetching all data when the component mounts or when display settings change
   useEffect(() => {
     dispatch(getAllData(display));
   }, [dispatch, display]);
+
+  // Loading spinner if products data is not available yet
   if (!products) {
     return (
       <Section
@@ -25,6 +35,8 @@ export default function Main() {
       </Section>
     );
   }
+
+  // Rendering the main component with DataDisplay and ProductCard
   return (
     <>
       <Section className="col-lg-8 col-md-12 col-sm-12 mx-auto">
