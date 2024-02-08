@@ -1,3 +1,4 @@
+// Action creator to add a product to the shopping cart
 export const addToCart = (id) => {
   return {
     type: "ADD_DATA_TO_CART",
@@ -5,6 +6,7 @@ export const addToCart = (id) => {
   };
 };
 
+// Action creator to remove a product from the shopping cart
 export const removeFromCart = (id) => {
   return {
     type: "REMOVE_DATA_FROM_CART",
@@ -12,6 +14,7 @@ export const removeFromCart = (id) => {
   };
 };
 
+// Action creator to fetch all products from the API
 export const getAllData = (display) => {
   return async (dispatch, getState) => {
     const response = await fetch(
@@ -25,6 +28,7 @@ export const getAllData = (display) => {
   };
 };
 
+// Action creator to fetch a single product by ID from the API
 export const getDataById = (id) => {
   return async (dispatch, getState) => {
     const response = await fetch("https://dummyjson.com/products/" + id);
@@ -35,6 +39,8 @@ export const getDataById = (id) => {
     });
   };
 };
+
+// Action creator to fetch products by category from the API
 export const getDataByCategory = (category, display) => {
   return async (dispatch, getState) => {
     const response = await fetch(
@@ -50,6 +56,8 @@ export const getDataByCategory = (category, display) => {
     });
   };
 };
+
+// Action creator to fetch products based on a search query from the API
 export const getSearchData = (searchData) => {
   return async (dispatch, getState) => {
     const response = await fetch(
