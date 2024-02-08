@@ -3,7 +3,7 @@ import Section from "../Layout/Section";
 
 export default function Contact() {
   return (
-    <Section className="col-lg-9 col-md-9 col-sm-12 mt-4 mb-2 d-flex justify-content-center align-items-center">
+    <Section className="col-lg-9 col-md-9 col-sm-12 mt-4 mb-2 d-flex justify-content-center align-items-center  mx-auto">
       <div className=" w-75 ">
         <h1 className="text-center text-white">Feel Free To Contact Us!</h1>
         <form className="mt-3 border p-3 rounded-3 border-dark shadow" onSubmit={(event)=>event.preventDefault()} style={{backgroundColor: "#B9EDDD"}}>

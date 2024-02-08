@@ -3,7 +3,7 @@ import Section from "../Layout/Section";
 export default function About() {
   return (
     <Section className="col-lg-8 col-md-9 col-sm-12 mt-4 mb-2 d-flex justify-content-center align-items-center  mx-auto">
-      <div>
+      <div className="">
         <h1 className="text-white">This is Us!</h1>
         <p
           className="fs-5 p-3 rounded w-100"

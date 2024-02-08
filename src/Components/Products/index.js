@@ -13,6 +13,9 @@ import Section from "../Layout/Section";
 import ProductCard from "./Card";
 import RatingStars from "./RatingStars";
 
+import ErrorModal from "../Layout/ErrorModal";
+
+
 const MergeDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -26,6 +29,7 @@ const InnerCarousel = styled.div`
   }
 `;
 export default function Product() {
+  const [modalShow, setModalShow] = useState(false);
   const { identify } = useParams();
   const dispatch = useDispatch();
   const [range, setRange] = useState(1);
@@ -80,7 +84,7 @@ export default function Product() {
 
   const handleAddToCart = () => {
     if (inCartIds.some((i) => i.id === id)) {
-      alert("Product already in CART!");
+      setModalShow(true)
     } else {
       dispatch(addToCart({ id, quantity: Number(range) }));
     }
@@ -203,6 +207,7 @@ export default function Product() {
           )}
         </div>
       </div>
+      <ErrorModal modalShow={modalShow} setModalShow={setModalShow} content={"Sorry, but this product is already in your cart!"}/>
     </Section>
   );
 }

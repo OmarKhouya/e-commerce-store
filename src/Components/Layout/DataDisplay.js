@@ -1,22 +1,40 @@
 import { useEffect, useState } from "react";
+import { getSearchData } from "../../store/actions";
+// import { RiSearchFill } from "react-icons/ri";
+// import { IoRefreshCircleOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 
-import { RiSearchFill } from "react-icons/ri";
-
-export default function DataDisplay({ setDisplay }) {
+export default function DataDisplay({ setDisplay,category }) {
   const range = [16, 32, 64, 100];
+  
   const [data, setData] = useState({ limit: 16 });
   useEffect(() => {
     setDisplay(data);
-  }, [data,setDisplay]);
+  }, [data, setDisplay]);
+  
+  const dispatch = useDispatch();
+
+  const handleSearch = (e)=>{
+    dispatch(getSearchData(e.target.value)) 
+  }
+
   return (
-    <nav className="" >
-      <div className="m-2 p-3 rounded d-flex justify-content-end" style={{backgroundColor: "#87CBB9"}}>
-        {/* <div className="w-75 input-group">
-          <input type="text" className="form-control" />
-          <button type="button" className="btn btn-dark">
-            <RiSearchFill />
-          </button>
-        </div> */}
+    <nav className="">
+      <div
+        className="m-2 p-3 rounded d-flex justify-content-between"
+        style={{ backgroundColor: "#87CBB9" }}
+      >
+        <div className="w-75 input-group">
+          <input
+            type="text"
+            className="form-control"
+            placeholder={`search here! ${category !== undefined ? "("+category+")" : ""}`}
+            onChange={handleSearch}
+          />
+          {/* <button type="button" className="btn" onClick={handleSearch}>
+            <IoRefreshCircleOutline />
+          </button> */}
+        </div>
         <div className="dropdown active">
           <button
             className="dropdown-toggle text-black form-control"

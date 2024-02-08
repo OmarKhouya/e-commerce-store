@@ -28,8 +28,8 @@ export default function Filter() {
     );
   }
   return (
-    <Section className="col-lg-9 col-md-12 col-sm-12 mx-auto">
-      <DataDisplay setDisplay={setDisplay} />
+    <Section className="col-lg-8 col-md-12 col-sm-12 mx-auto">
+      <DataDisplay setDisplay={setDisplay} category={category}/>
       <div className="row justify-content-center">
         {products &&
           products.products.map((product) => (

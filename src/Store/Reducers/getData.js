@@ -6,6 +6,8 @@ const getData = (state = {}, action) => {
       return { ...state, product: action.payload };
     case "GET_DATA_BY_CATEGORY":
       return { ...state, products: action.payload };
+    case "SEARCH_DATA":
+      return {...state, products: action.payload}
     default:
       return state;
   }

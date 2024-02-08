@@ -27,7 +27,7 @@ export default function ProductCard({ prodData }) {
     thumbnail,
   } = prodData;
   return (
-    <div className="col-lg-4 col-md-4 col-sm-4" key={id}>
+    <div className="col-lg-4 col-md-4 col-sm-4 h-100" key={id}>
       <div
         className="card my-2 shadow mx-2 rounded"
         style={{ backgroundColor: "#B9EDDD" /*  borderColor: "#E6A4B4"  */ }}

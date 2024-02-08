@@ -50,3 +50,15 @@ export const getDataByCategory = (category, display) => {
     });
   };
 };
+export const getSearchData = (searchData) => {
+  return async (dispatch, getState) => {
+    const response = await fetch(
+      "https://dummyjson.com/products/search?q=" + searchData
+    );
+    const products = await response.json();
+    dispatch({
+      type: "SEARCH_DATA",
+      payload: products,
+    });
+  };
+};
