@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { CgArrowLongRight } from "react-icons/cg";
 
+// Component for rendering the receipt in the shopping cart
 export default function Receipt({ data, data2 }) {
+  // State to store the total price
   const [total, setTotal] = useState(0);
 
+  // Function to calculate the total price
   const CountTotal = () => {
     let calculatedTotal = 0;
     data.forEach((d) => {
@@ -15,10 +18,12 @@ export default function Receipt({ data, data2 }) {
     setTotal(calculatedTotal);
   };
 
+  // Recalculate total when data or data2 changes
   useEffect(() => {
     CountTotal();
   }, [data, data2]);
 
+  // Render the receipt component
   return (
     <div
       className="px-3 py-4 mb-3 rounded"
@@ -26,7 +31,7 @@ export default function Receipt({ data, data2 }) {
     >
       <span className="d-block text-center fs-3">receipt</span>
       <hr />
-      {data.map((d,index) => {
+      {data.map((d, index) => {
         const match = data2.find((item) => item.id === d.id);
         if (match) {
           return (

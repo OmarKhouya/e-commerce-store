@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Card from "./Card";
@@ -6,16 +6,26 @@ import Receipt from "./Receipt";
 import Section from "../Layout/Section";
 import { getAllData } from "../../store/actions";
 
+// Component for rendering the shopping cart page
 export default function Cart() {
+  // State to store data of items in the cart
   const [inCartData, setInCartData] = useState();
+
+  // Redux selectors and dispatch hook
   const inCartIdentifies = useSelector(
     (state) => state.inCartIds.inCartIdentifies
   );
   const dispatch = useDispatch();
+
+  // Fetch all product data on component mount
   useEffect(() => {
     dispatch(getAllData({ limit: 100 }));
   }, [dispatch]);
+
+  // Get the latest products data from the Redux store
   const products = useSelector((state) => state.prods.products);
+
+  // Update inCartData when products or inCartIdentifies change
   useEffect(() => {
     if (products) {
       setInCartData(
@@ -26,6 +36,7 @@ export default function Cart() {
     }
   }, [products, inCartIdentifies]);
 
+  // Loading spinner while data is being fetched
   if (!inCartData) {
     return (
       <Section
@@ -38,13 +49,18 @@ export default function Cart() {
       </Section>
     );
   }
+
   return (
     <Section className="col-lg-9 col-md-9 col-sm-12 mx-auto">
       <div className="row">
         <div className="col-lg-8 col-sm-12 ">
           {inCartData.length > 0 ? (
-            inCartData.map((cardData, index) => <Card key={index} data={cardData} />)
+            // Render individual cards for each item in the cart
+            inCartData.map((cardData, index) => (
+              <Card key={index} data={cardData} />
+            ))
           ) : (
+            // Display a message if the cart is empty
             <div
               className="text-center justify-content-center align-items-center d-flex rounded shadow mb-3"
               style={{
@@ -58,6 +74,7 @@ export default function Cart() {
           )}
         </div>
         <div className="col-lg-4 col-md-12 col-sm-12 mb-3">
+          {/* Render the receipt component with cart data */}
           <Receipt data={inCartData} data2={inCartIdentifies} />
         </div>
       </div>
