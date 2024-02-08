@@ -28,7 +28,7 @@ Welcome to E-commerce Store, a full-fledged web application developed with React
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/e-commerce-store.git
+   git clone https://github.com/OmarKhouya/e-commerce-store.git
 2. **Install dependencies:**
    ```bash
    npm install
