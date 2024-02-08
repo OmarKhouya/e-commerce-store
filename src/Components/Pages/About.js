@@ -1,14 +1,20 @@
+// Importing the Section component for styling
 import Section from "../Layout/Section";
 
+// Functional component for the About page
 export default function About() {
   return (
-    <Section className="col-lg-8 col-md-9 col-sm-12 mt-4 mb-2 d-flex justify-content-center align-items-center  mx-auto">
+    // Using the styled Section component with specific styling and positioning
+    <Section className="col-lg-8 col-md-9 col-sm-12 mt-4 mb-2 d-flex justify-content-center align-items-center mx-auto">
       <div className="">
+        {/* Heading for the About page */}
         <h1 className="text-white">This is Us!</h1>
+        {/* Paragraph describing the E-commerce Store */}
         <p
           className="fs-5 p-3 rounded w-100"
-          style={{ textAlign: "justify",backgroundColor: "#B9EDDD" }}
+          style={{ textAlign: "justify", backgroundColor: "#B9EDDD" }}
         >
+          {/* Content of the About page */}
           Welcome to E-commerce Store, where passion meets innovation in the
           world of e-commerce. Established in 2023, we embarked on a journey
           with a simple yet profound vision: to redefine online shopping by
@@ -31,7 +37,7 @@ export default function About() {
           products and service. Join us in our quest to shape the future of
           online shopping, one satisfied customer at a time. Thank you for
           choosing E-commerce Store. Let’s embark on this exciting journey
-          together
+          together.
         </p>
       </div>
     </Section>
