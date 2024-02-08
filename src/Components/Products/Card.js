@@ -1,9 +1,10 @@
+// Importing necessary React components and styling
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import RatingStars from "./RatingStars";
 
+// Styled component for the card image
 const CardImg = styled.img`
-  // height: 7rem;
   @media only screen and (max-width: 767px) and (min-width: 396px) {
     height: auto;
   }
@@ -12,11 +13,14 @@ const CardImg = styled.img`
   }
 `;
 
+// Styled component for the card body
 const CardBody = styled.div`
   height: 10rem !important;
 `;
 
+// Functional component for the Product Card
 export default function ProductCard({ prodData }) {
+  // Destructuring product data
   const {
     id,
     title,
@@ -26,27 +30,36 @@ export default function ProductCard({ prodData }) {
     category,
     thumbnail,
   } = prodData;
+
+  // Rendering the product card
   return (
     <div className="col-lg-4 col-md-4 col-sm-4 h-100" key={id}>
       <div
         className="card my-2 shadow mx-2 rounded"
-        style={{ backgroundColor: "#B9EDDD" /*  borderColor: "#E6A4B4"  */ }}
+        style={{ backgroundColor: "#B9EDDD" }}
       >
+        {/* Link to the product details page */}
         <Link className="card-header" to={`/${category}/${id}`}>
+          {/* Product thumbnail image */}
           <CardImg src={thumbnail} alt="thumbnail" className="card-img-top" />
         </Link>
+        {/* Card body with product details */}
         <CardBody className="card-body">
+          {/* Product title */}
           <h4 className="">{title}</h4>
+          {/* Product price and discount */}
           <p className="m-0">
             {price} $ -{" "}
             <span className="text-decoration-line-through text-danger">
               {discountPercentage}%
             </span>
           </p>
+          {/* Product rating */}
           <div className="mt-1">
             <RatingStars rating={rating} /> ({rating})
           </div>
         </CardBody>
+        {/* Buy now button */}
         <div className="p-3">
           <Link
             className="btn w-50 btn-outline-light text-dark"
