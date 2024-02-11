@@ -66,7 +66,6 @@ export default function Product() {
       setRange(1);
     };
   }, []);
-
   // Loading spinner when product data is not available
   if (!product) {
     return (
@@ -87,6 +86,7 @@ export default function Product() {
     title,
     description,
     price,
+    category,
     discountPercentage,
     rating,
     stock,
@@ -112,27 +112,17 @@ export default function Product() {
       style={{ backgroundColor: "#BFEAF5" }}
     >
       {/* Product details section */}
-      <div>
-        <span className="text-center fs-1 d-block mt-3">{title}</span>
-        <span className="text-center fs-4 d-block mt-3 text-muted">
-          {description}
-        </span>
-      </div>
-
       {/* Product images and details section */}
-      <MergeDiv className="mt-3">
+      <MergeDiv className="pt-3">
         {/* Product images carousel */}
-        <div className="mx-auto">
-          <div
-            id={`carouselProductImage${id}`}
-            className="carousel slide carousel-fade shadow"
-          >
-            <InnerCarousel className="carousel-inner rounded">
+        <div className="mx-auto mt-4">
+          <div id={`carouselProductImage${id}`} className="carousel slide">
+            <InnerCarousel className="carousel-inner">
               <div className="carousel-item active">
                 <img className="card-img" src={thumbnail} alt="thumbnail" />
               </div>
-              {images.map((image) => (
-                <div className="carousel-item" key={image}>
+              {images.map((image, index) => (
+                <div className="carousel-item" key={index}>
                   <img className="card-img" src={image} alt="Product" />
                 </div>
               ))}
@@ -166,7 +156,11 @@ export default function Product() {
         </div>
 
         {/* Product details and actions */}
+
         <div className="m-auto">
+          <div>
+            <span className="text-center fs-1 d-block mt-3">{title}</span>
+          </div>
           <div
             className="text-center rounded px-2 py-3 w-100"
             style={{ backgroundColor: "#BFEAF5", borderColor: "#91D8E4" }}
@@ -177,23 +171,6 @@ export default function Product() {
                 {discountPercentage}%
               </span>
             </span>
-            {/* Quantity selection */}
-            <div className="d-flex w-100 mt-3">
-              <span className="w-50 m-auto">Quantity : </span>
-              <button
-                className="p-3 rounded border"
-                onClick={() => range > 1 && setRange((prev) => prev - 1)}
-              >
-                <SlArrowLeft />
-              </button>
-              <span className="m-auto px-3">{range}</span>
-              <button
-                className="p-3 rounded border"
-                onClick={() => range < stock && setRange((prev) => prev + 1)}
-              >
-                <SlArrowRight />
-              </button>
-            </div>
             {/* Stock availability */}
             <div className="mt-3">
               {stock > 0 ? `in stock : ${stock}` : "not in stock"}
@@ -201,6 +178,35 @@ export default function Product() {
             {/* Product rating */}
             <div className="mt-3">
               <RatingStars rating={rating} /> ({rating})
+            </div>
+            {/* Quantity selection */}
+            <p className="m-auto mt-3">Quantity : </p>
+            <div className="d-flex w-100 ">
+              <button
+                className="btn  btn-outline-dark mx-1"
+                onClick={() => setRange(1)}
+              >
+                MIN
+              </button>
+              <button
+                className="btn"
+                onClick={() => range > 1 && setRange((prev) => prev - 1)}
+              >
+                <SlArrowLeft />
+              </button>
+              <span className="m-auto px-3">{range}</span>
+              <button
+                className="btn"
+                onClick={() => range < stock && setRange((prev) => prev + 1)}
+              >
+                <SlArrowRight />
+              </button>
+              <button
+                className="btn  btn-outline-dark  mx-1"
+                onClick={() => setRange(stock)}
+              >
+                MAX
+              </button>
             </div>
             {/* Add to Cart and Go to Cart buttons */}
             <div className="d-flex justify-content-center mt-3 w-100">
@@ -217,19 +223,25 @@ export default function Product() {
           </div>
         </div>
       </MergeDiv>
-
+      <div className="mt-3 m-auto text-center pt-3">
+        <span className="fs-5 ">{description}</span>
+        <hr />
+      </div>
       {/* Related products section */}
       <div className="mb-3">
-        <p className="text-center fs-3 mt-3">More like this..</p>
-        <div className="d-flex justify-content-center">
+        <span className="text-start fs-3 my-3 ms-3 d-block">
+          more {category} :{" "}
+        </span>
+        {/* <div className="d-flex justify-content-center">
           <hr className="mx-4 w-50 " />
-        </div>
+        </div> */}
         <div className="row justify-content-evenly">
           {/* Loading spinner or related products */}
           {products ? (
-            products.products.map((p, index) => (
-              p.id !== id && <ProductCard prodData={p} key={index} />
-            ))
+            products.products.map(
+              (p, index) =>
+                p.id !== id && <ProductCard prodData={p} key={index} />
+            )
           ) : (
             <div className="spinner-border" role="status">
               <span className="visually-hidden">Loading...</span>
