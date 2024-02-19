@@ -108,10 +108,14 @@ export default function Product() {
   // Rendering the Product page
   return (
     <Section
-      className="col-lg-8 col-md-9 mb-2 rounded mx-auto"
+      className="w-100"
       style={{ backgroundColor: "#BFEAF5" }}
     >
       {/* Product details section */}
+      <div className="mt-3 m-auto text-center pt-3">
+        <span className="fs-5 ">{description}</span>
+        <hr />
+      </div>
       {/* Product images and details section */}
       <MergeDiv className="pt-3">
         {/* Product images carousel */}
@@ -165,12 +169,12 @@ export default function Product() {
             className="text-center rounded px-2 py-3 w-100"
             style={{ backgroundColor: "#BFEAF5", borderColor: "#91D8E4" }}
           >
-            <span className="fs-2 text-dark m-3">
-              {price}$-
-              <span className="fs-4 text-danger text-decoration-line-through">
-                {discountPercentage}%
-              </span>
+            <span className="fs-2 text-dark mt-3 d-block">
+              {price}$
             </span>
+              <span className="fs-5 text-muted text-decoration-line-through">
+                {Math.floor(price + (price * (discountPercentage / 100)))}$
+              </span>
             {/* Stock availability */}
             <div className="mt-3">
               {stock > 0 ? `in stock : ${stock}` : "not in stock"}
@@ -183,7 +187,7 @@ export default function Product() {
             <p className="m-auto mt-3">Quantity : </p>
             <div className="d-flex w-100 ">
               <button
-                className="btn  btn-outline-dark mx-1"
+                className="btn  btn-dark mx-1"
                 onClick={() => setRange(1)}
               >
                 MIN
@@ -202,7 +206,7 @@ export default function Product() {
                 <SlArrowRight />
               </button>
               <button
-                className="btn  btn-outline-dark  mx-1"
+                className="btn  btn-dark  mx-1"
                 onClick={() => setRange(stock)}
               >
                 MAX
@@ -216,17 +220,14 @@ export default function Product() {
               >
                 Add to CART <FaCartPlus />
               </button>
-              <Link to={"/cart"} className="btn btn-outline-success">
+              <Link to={"/cart"} className="btn btn-success">
                 Go to CART <FaShoppingCart />
               </Link>
             </div>
           </div>
         </div>
       </MergeDiv>
-      <div className="mt-3 m-auto text-center pt-3">
-        <span className="fs-5 ">{description}</span>
-        <hr />
-      </div>
+      <hr />
       {/* Related products section */}
       <div className="mb-3">
         <span className="text-start fs-3 my-3 ms-3 d-block">

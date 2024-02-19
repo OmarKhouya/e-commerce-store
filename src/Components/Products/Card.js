@@ -9,13 +9,13 @@ const CardImg = styled.img`
     height: auto;
   }
   @media only screen and (min-width: 1214px) {
-    height: 14rem;
+    height: 10rem;
   }
 `;
 
 // Styled component for the card body
 const CardBody = styled.div`
-  height: 10rem !important;
+  height: 8rem !important;
 `;
 
 // Functional component for the Product Card
@@ -33,7 +33,7 @@ export default function ProductCard({ prodData }) {
 
   // Rendering the product card
   return (
-    <div className="col-lg-4 col-md-4 col-sm-4 h-100" key={id}>
+    <div className="col-lg-3 col-md-5 col-sm-4 h-100" key={id}>
       <div
         className="card my-2 shadow mx-2 rounded"
         style={{ backgroundColor: "#B9EDDD" }}

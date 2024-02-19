@@ -42,16 +42,17 @@ export default function Filter() {
 
   // Rendered content for the Filtered Main Page
   return (
-    <Section className="col-lg-8 col-md-12 col-sm-12 mx-auto">
+    <Section className="w-100">
       {/* Data display component for filtering and searching */}
       <DataDisplay setDisplay={setDisplay} category={category} />
       
       {/* Displaying products in a row */}
-      <div className="row justify-content-center">
-        {products &&
+      <div className="row justify-content-center w-100">
+        {products &&((products.products.length > 0) ?
           products.products.map((product) => (
             <ProductCard prodData={product} key={product.id} />
-          ))}
+          )):<img src="/Assets/Error404.png" className="w-50" alt="No products were founed" />)}
+        
       </div>
     </Section>
   );

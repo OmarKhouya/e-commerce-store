@@ -39,12 +39,20 @@ export default function Main() {
   // Rendering the main component with DataDisplay and ProductCard
   return (
     <>
-      <Section className="col-lg-8 col-md-12 col-sm-12 mx-auto">
+      <Section className="w-100">
         <DataDisplay setDisplay={setDisplay} />
-        <div className="row justify-content-evenly">
+        <div className="row justify-content-center w-100">
           {products &&
-            products.products.map((product) => (
-              <ProductCard prodData={product} key={product.id} />
+            (products.products.length > 0 ? (
+              products.products.map((product) => (
+                <ProductCard prodData={product} key={product.id} />
+              ))
+            ) : (
+              <img
+                src="/Assets/Error404.png"
+                className="w-50"
+                alt="No products were founed"
+              />
             ))}
         </div>
       </Section>

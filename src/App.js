@@ -13,6 +13,17 @@ import Contact from "./Components/Pages/Contact";
 // Importing necessary modules from the react-router-dom and react
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import styled from "styled-components";
+import UncontrolledExample from "./Components/Layout/Carousel";
+
+const SMain = styled.main`
+  @media (min-width: 768px) {
+    display: flex!important;
+  }
+  @media (max-width: 768px) {
+    display: block!important;
+  }
+`
 
 // Main App component
 export default function App() {
@@ -26,9 +37,8 @@ export default function App() {
       <div className="w-100 overflow-hidden">
         {/* Header component with a callback to manage navbar toggle */}
         <Header setNavbarToggle={setNavbarToggle} />
-
         {/* Main content area */}
-        <main className="row p-0">
+        <SMain>
           {/* Navigation component with the toggle status passed as a prop */}
           <Nav navbarToggle={navbarToggle} />
 
@@ -43,7 +53,7 @@ export default function App() {
             <Route path="/Contact" element={<Contact />} /> {/* Contact page */}
             <Route path="*" element={<NotFoundPage />} /> {/* 404 Not Found page */}
           </Routes>
-        </main>
+        </SMain>
 
         {/* Footer component */}
         <Footer />

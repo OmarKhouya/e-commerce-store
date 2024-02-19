@@ -5,6 +5,7 @@ import Card from "./Card";
 import Receipt from "./Receipt";
 import Section from "../Layout/Section";
 import { getAllData } from "../../store/actions";
+import { Link } from "react-router-dom";
 
 // Component for rendering the shopping cart page
 export default function Cart() {
@@ -51,7 +52,7 @@ export default function Cart() {
   }
 
   return (
-    <Section className="col-lg-9 col-md-9 col-sm-12 mx-auto">
+    <Section className="w-100 p-3">
       <div className="row">
         <div className="col-lg-8 col-sm-12 ">
           {inCartData.length > 0 ? (
@@ -69,7 +70,7 @@ export default function Cart() {
                 borderColor: "#91D8E4",
               }}
             >
-              <p className="fs-4  p-3 ">Try to add something in here!</p>
+              <Link to={"/"}  className="fs-4  p-3 ">Try to add something in here !</Link>
             </div>
           )}
         </div>

@@ -6,17 +6,17 @@ const Section = styled.section`
   /* Styling for the section */
   overflow: scroll;
   overflow-x: hidden;
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
 
   /* Media queries for responsiveness */
   @media (min-width: 768px) {
-    height: 90.1vh !important;
-    max-width: 97%;
+    height: 82vh!important;
+    max-width: 100%;
   }
 
   @media (max-width: 767px) {
-    max-width: 90%;
-    max-height: none !important;
+    max-width: 100%;
+    max-height: none!important;
   }
 `;
 
